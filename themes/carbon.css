@@ -1,0 +1,374 @@
+/*!
+ * @theme carbon
+ * @auto-scaling true
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ *
+ * Unofficial Marp theme based on the IBM Carbon Design System.
+ * Not affiliated with IBM. See README for details.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap');
+
+section {
+  --carbon-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --carbon-font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --carbon-font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+
+  --carbon-bg: #ffffff;
+  --carbon-layer: #f4f4f4;
+  --carbon-layer-accent: #e0e0e0;
+  --carbon-border: #e0e0e0;
+  --carbon-border-strong: #8d8d8d;
+
+  --carbon-text: #161616;
+  --carbon-text-secondary: #525252;
+  --carbon-text-helper: #6f6f6f;
+  --carbon-text-placeholder: #a8a8a8;
+  --carbon-text-on-color: #ffffff;
+
+  --carbon-accent: #0f62fe;
+  --carbon-accent-hover: #0050e6;
+  --carbon-link: #0f62fe;
+  --carbon-link-visited: #8a3ffc;
+
+  --carbon-error: #da1e28;
+  --carbon-success: #24a148;
+  --carbon-warning: #f1c21b;
+  --carbon-info: #0043ce;
+
+  --carbon-code-bg: #f4f4f4;
+  --carbon-code-text: #161616;
+  --carbon-code-keyword: #0043ce;
+  --carbon-code-string: #0e6027;
+  --carbon-code-comment: #6f6f6f;
+  --carbon-code-number: #d12771;
+  --carbon-code-fn: #8a3ffc;
+
+  --carbon-pad: 64px;
+  --carbon-rule: 4px;
+
+  color-scheme: light;
+  background: var(--carbon-bg);
+  color: var(--carbon-text);
+  font-family: var(--carbon-font-sans);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  padding: var(--carbon-pad);
+  justify-content: flex-start;
+  align-items: stretch;
+  text-align: left;
+
+  border-left: var(--carbon-rule) solid var(--carbon-accent);
+}
+
+section.g10 {
+  --carbon-bg: #f4f4f4;
+  --carbon-layer: #ffffff;
+  --carbon-layer-accent: #e0e0e0;
+  --carbon-border: #c6c6c6;
+  --carbon-code-bg: #ffffff;
+}
+
+section.invert,
+section.dark,
+section.g100,
+section.g90 {
+  --carbon-bg: #161616;
+  --carbon-layer: #262626;
+  --carbon-layer-accent: #393939;
+  --carbon-border: #393939;
+  --carbon-border-strong: #6f6f6f;
+
+  --carbon-text: #f4f4f4;
+  --carbon-text-secondary: #c6c6c6;
+  --carbon-text-helper: #a8a8a8;
+  --carbon-text-placeholder: #6f6f6f;
+  --carbon-text-on-color: #ffffff;
+
+  --carbon-accent: #4589ff;
+  --carbon-accent-hover: #78a9ff;
+  --carbon-link: #78a9ff;
+  --carbon-link-visited: #be95ff;
+
+  --carbon-error: #fa4d56;
+  --carbon-success: #42be65;
+  --carbon-warning: #f1c21b;
+  --carbon-info: #4589ff;
+
+  --carbon-code-bg: #262626;
+  --carbon-code-text: #f4f4f4;
+  --carbon-code-keyword: #78a9ff;
+  --carbon-code-string: #42be65;
+  --carbon-code-comment: #a8a8a8;
+  --carbon-code-number: #ff7eb6;
+  --carbon-code-fn: #be95ff;
+
+  color-scheme: dark;
+}
+
+section.g90 {
+  --carbon-bg: #262626;
+  --carbon-layer: #393939;
+  --carbon-layer-accent: #525252;
+  --carbon-code-bg: #393939;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--carbon-font-sans);
+  color: var(--carbon-text);
+  margin: 0 0 0.5em;
+  letter-spacing: -0.005em;
+  line-height: 1.15;
+}
+
+h1::part(auto-scaling),
+h2::part(auto-scaling),
+h3::part(auto-scaling),
+h4::part(auto-scaling),
+h5::part(auto-scaling),
+h6::part(auto-scaling) {
+  max-height: calc(720px - var(--carbon-pad) * 2);
+}
+pre::part(auto-scaling) {
+  max-height: calc(720px - var(--carbon-pad) * 2 - 4em);
+}
+
+h1 {
+  font-size: 54px;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  margin-top: 0;
+}
+h2 { font-size: 36px; font-weight: 300; }
+h3 { font-size: 28px; font-weight: 400; }
+h4 { font-size: 22px; font-weight: 600; }
+h5 { font-size: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--carbon-text-secondary); }
+h6 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--carbon-text-helper); }
+
+h1 strong, h2 strong, h3 strong {
+  font-weight: inherit;
+  color: var(--carbon-accent);
+}
+
+p, ul, ol, blockquote, table, pre, figure {
+  margin: 0 0 0.75em;
+}
+
+strong { font-weight: 600; }
+em { font-style: italic; }
+
+a, a:visited {
+  color: var(--carbon-link);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+a:hover { color: var(--carbon-accent-hover); }
+
+small, .caption {
+  font-size: 14px;
+  color: var(--carbon-text-secondary);
+  letter-spacing: 0.16px;
+}
+
+ul, ol { padding-left: 1.5em; }
+li { margin: 0.25em 0; }
+li::marker { color: var(--carbon-accent); }
+
+blockquote {
+  border-left: 2px solid var(--carbon-accent);
+  padding: 0.25em 0 0.25em 1em;
+  margin-left: 0;
+  color: var(--carbon-text-secondary);
+  font-style: normal;
+  font-family: var(--carbon-font-serif);
+  font-size: 1.1em;
+}
+blockquote > *:first-child { margin-top: 0; }
+blockquote > *:last-child { margin-bottom: 0; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--carbon-border);
+  height: 0;
+  margin: 1em 0;
+}
+
+code, kbd, samp {
+  font-family: var(--carbon-font-mono);
+  font-size: 0.9em;
+}
+:not(pre) > code {
+  background: var(--carbon-layer);
+  color: var(--carbon-code-text);
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+  border: 1px solid var(--carbon-border);
+}
+pre {
+  background: var(--carbon-code-bg);
+  color: var(--carbon-code-text);
+  border: 1px solid var(--carbon-border);
+  border-left: 3px solid var(--carbon-accent);
+  padding: 1em 1.25em;
+  overflow: auto;
+  font-size: 18px;
+  line-height: 1.45;
+  border-radius: 0;
+}
+pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.hljs { background: transparent; color: var(--carbon-code-text); }
+.hljs-keyword, .hljs-selector-tag, .hljs-built_in, .hljs-type { color: var(--carbon-code-keyword); }
+.hljs-string, .hljs-attr, .hljs-template-tag, .hljs-addition { color: var(--carbon-code-string); }
+.hljs-comment, .hljs-quote, .hljs-meta { color: var(--carbon-code-comment); font-style: italic; }
+.hljs-number, .hljs-literal, .hljs-symbol { color: var(--carbon-code-number); }
+.hljs-title, .hljs-function, .hljs-section, .hljs-name { color: var(--carbon-code-fn); }
+.hljs-variable, .hljs-attribute, .hljs-tag { color: var(--carbon-text); }
+.hljs-deletion { color: var(--carbon-error); }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 18px;
+}
+th, td {
+  padding: 0.6em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--carbon-border);
+}
+th {
+  background: var(--carbon-layer);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.16px;
+  color: var(--carbon-text);
+  border-bottom: 1px solid var(--carbon-border-strong);
+}
+tr:hover td { background: var(--carbon-layer); }
+
+img {
+  max-width: 100%;
+  background: transparent;
+}
+figcaption {
+  font-size: 14px;
+  color: var(--carbon-text-secondary);
+  margin-top: 0.5em;
+}
+
+.katex { color: var(--carbon-text); font-size: 1em; }
+.katex-display {
+  margin: 0.75em 0;
+  padding: 0.5em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.katex-display > .katex { color: var(--carbon-text); }
+
+mark {
+  background: transparent;
+  color: inherit;
+}
+
+/* Mermaid is not rendered by Marp core. These styles only apply if a
+   Mermaid plugin is wired into the Marp engine. */
+.mermaid {
+  background: var(--carbon-layer);
+  border: 1px solid var(--carbon-border);
+  border-left: 3px solid var(--carbon-accent);
+  padding: 1em;
+  font-family: var(--carbon-font-sans);
+}
+.mermaid text { fill: var(--carbon-text) !important; font-family: var(--carbon-font-sans) !important; }
+.mermaid .node rect, .mermaid .node circle, .mermaid .node polygon { fill: var(--carbon-bg) !important; stroke: var(--carbon-accent) !important; }
+.mermaid .edgePath .path { stroke: var(--carbon-text-secondary) !important; }
+.mermaid .arrowheadPath { fill: var(--carbon-text-secondary) !important; }
+
+header, footer {
+  position: absolute;
+  left: var(--carbon-pad);
+  right: var(--carbon-pad);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+  color: var(--carbon-text-helper);
+  font-family: var(--carbon-font-sans);
+  padding: 0;
+  height: auto;
+  line-height: 1.4;
+}
+header { top: 24px; }
+footer { bottom: 24px; }
+
+section::after {
+  position: absolute;
+  right: var(--carbon-pad);
+  bottom: 24px;
+  left: auto;
+  top: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  font-family: var(--carbon-font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--carbon-text-helper);
+  letter-spacing: 0.16px;
+}
+
+section.lead {
+  justify-content: center;
+  text-align: left;
+  padding-left: calc(var(--carbon-pad) + 24px);
+}
+section.lead h1 {
+  font-size: 76px;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+section.lead h1 strong { color: var(--carbon-accent); }
+section.lead h2 {
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--carbon-text-secondary);
+  margin-top: 0.5em;
+  max-width: 40ch;
+}
+section.lead p,
+section.lead ul {
+  font-size: 18px;
+  color: var(--carbon-text-secondary);
+  max-width: 60ch;
+}
+section.lead hr {
+  width: 64px;
+  border-top: 4px solid var(--carbon-accent);
+  margin: 1.5em 0 1em;
+}
+
+section.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 48px;
+  align-content: start;
+}
+section.split > h1,
+section.split > h2,
+section.split > header,
+section.split > footer { grid-column: 1 / -1; }
+
+@media print {
+  section { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

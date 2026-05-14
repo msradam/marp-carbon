@@ -1,0 +1,78 @@
+/*!
+ * @theme carbon-dark
+ * @auto-scaling true
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ *
+ * Dark (g100) variant of the carbon theme.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap');
+@import url('./carbon.css');
+
+section {
+  --carbon-bg: #161616;
+  --carbon-layer: #262626;
+  --carbon-layer-accent: #393939;
+  --carbon-border: #393939;
+  --carbon-border-strong: #6f6f6f;
+
+  --carbon-text: #f4f4f4;
+  --carbon-text-secondary: #c6c6c6;
+  --carbon-text-helper: #a8a8a8;
+  --carbon-text-placeholder: #6f6f6f;
+  --carbon-text-on-color: #ffffff;
+
+  --carbon-accent: #4589ff;
+  --carbon-accent-hover: #78a9ff;
+  --carbon-link: #78a9ff;
+  --carbon-link-visited: #be95ff;
+
+  --carbon-error: #fa4d56;
+  --carbon-success: #42be65;
+  --carbon-warning: #f1c21b;
+  --carbon-info: #4589ff;
+
+  --carbon-code-bg: #262626;
+  --carbon-code-text: #f4f4f4;
+  --carbon-code-keyword: #78a9ff;
+  --carbon-code-string: #42be65;
+  --carbon-code-comment: #a8a8a8;
+  --carbon-code-number: #ff7eb6;
+  --carbon-code-fn: #be95ff;
+
+  color-scheme: dark;
+}
+
+section.white,
+section.light {
+  --carbon-bg: #ffffff;
+  --carbon-layer: #f4f4f4;
+  --carbon-layer-accent: #e0e0e0;
+  --carbon-border: #e0e0e0;
+  --carbon-border-strong: #8d8d8d;
+
+  --carbon-text: #161616;
+  --carbon-text-secondary: #525252;
+  --carbon-text-helper: #6f6f6f;
+  --carbon-text-placeholder: #a8a8a8;
+
+  --carbon-accent: #0f62fe;
+  --carbon-accent-hover: #0050e6;
+  --carbon-link: #0f62fe;
+  --carbon-link-visited: #8a3ffc;
+
+  --carbon-error: #da1e28;
+  --carbon-success: #24a148;
+  --carbon-info: #0043ce;
+
+  --carbon-code-bg: #f4f4f4;
+  --carbon-code-text: #161616;
+  --carbon-code-keyword: #0043ce;
+  --carbon-code-string: #0e6027;
+  --carbon-code-comment: #6f6f6f;
+  --carbon-code-number: #d12771;
+  --carbon-code-fn: #8a3ffc;
+
+  color-scheme: light;
+}
