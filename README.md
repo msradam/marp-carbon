@@ -4,19 +4,7 @@ A [Marp](https://marp.app) theme based on the [IBM Carbon Design System](https:/
 
 ## Preview
 
-**`carbon` (light)**
-
-| | |
-|---|---|
-| ![Lead slide](examples/slides/slides.001.png) | ![Body slide](examples/slides/slides.002.png) |
-| ![Split layout](examples/slides/slides.004.png) | ![Tonal layer g10](examples/slides/slides.006.png) |
-
-**`carbon-dark` (dark)**
-
-| | |
-|---|---|
-| ![Dark lead slide](examples/slides/dark-slides.001.png) | ![Dark body slide](examples/slides/dark-slides.002.png) |
-| ![Dark split layout](examples/slides/dark-slides.004.png) | ![Dark per-slide class](examples/slides/dark-slides.005.png) |
+[examples/deck.pdf](examples/deck.pdf) — full example deck as PDF (12 slides, light and dark variants, Mermaid diagrams).
 
 ## Quick start
 
@@ -184,7 +172,7 @@ Pulled from `@carbon/colors`:
 | KaTeX math (`math: katex`)               |   Yes  |                                                     |
 | `<mark>` and `==highlight==`             |   Yes  |                                                     |
 | Emoji                                    |   Yes  | Marp core                                           |
-| Mermaid diagrams                         | Partial | Marp core does not render Mermaid. `.mermaid` selectors apply only if you wire up a Marp engine plugin. Otherwise pre-render to SVG and use `![](diagram.svg)`. |
+| Mermaid diagrams                         |   Yes  | Requires the bundled engine (`engine/index.js` via `.marprc.js`). Light and dark Carbon tokens applied per slide automatically. |
 | Embedded video / iframes                 | Partial | Requires `--html`                                   |
 
 ## Files
@@ -193,9 +181,17 @@ Pulled from `@carbon/colors`:
 themes/
   carbon.css        # main theme, light default
   carbon-dark.css   # dark default variant (self-contained, no local imports)
+engine/
+  index.js          # custom Marp engine: Mermaid fence renderer + per-slide theming
+mermaid/
+  index.js          # IBM Carbon token palette for Mermaid themeVariables
+src/
+  build.js          # generates themes/ from @carbon/themes and @carbon/colors
 examples/
-  deck.md           # demo deck
-  slides/           # pre-rendered slide previews
+  deck.md           # demo deck source
+  deck.html         # rendered HTML
+  deck.pdf          # rendered PDF
+  deck.pptx         # rendered PowerPoint
 ```
 
 ## Disclaimer
