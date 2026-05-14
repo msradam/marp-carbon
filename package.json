@@ -1,0 +1,54 @@
+{
+  "name": "carbon-marp",
+  "version": "0.1.0",
+  "description": "Marp theme based on the IBM Carbon Design System, with Carbon token-driven CSS and Mermaid diagram theming.",
+  "main": "engine/index.js",
+  "exports": {
+    ".": "./engine/index.js",
+    "./mermaid": "./mermaid/index.js",
+    "./themes/*": "./themes/*"
+  },
+  "files": [
+    "themes/",
+    "mermaid/",
+    "engine/",
+    "src/",
+    ".marprc.js"
+  ],
+  "scripts": {
+    "build": "node src/build.js",
+    "example": "npx @marp-team/marp-cli --config .marprc.js examples/deck.md -o examples/deck.html",
+    "example:pdf": "npx @marp-team/marp-cli --config .marprc.js examples/deck.md -o examples/deck.pdf",
+    "slides": "npx @marp-team/marp-cli --config .marprc.js examples/deck.md --images png --output examples/slides/slides."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msradam/carbon-marp.git"
+  },
+  "keywords": [
+    "marp",
+    "marp-theme",
+    "carbon",
+    "ibm",
+    "ibm-carbon",
+    "presentation",
+    "slides",
+    "mermaid"
+  ],
+  "author": "Adam Munawar Rahman",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/msradam/carbon-marp/issues"
+  },
+  "homepage": "https://github.com/msradam/carbon-marp#readme",
+  "dependencies": {
+    "@carbon/colors": "^11.51.0",
+    "@carbon/themes": "^11.73.0",
+    "@marp-team/marp-core": "^4.3.0"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^4.4.0",
+    "mermaid": "^11.15.0"
+  }
+}

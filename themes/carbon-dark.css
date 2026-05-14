@@ -6,6 +6,9 @@
  *
  * Unofficial Marp theme based on the IBM Carbon Design System — dark (g100) default.
  * Not affiliated with IBM. See README for details.
+ *
+ * Generated from @carbon/themes@11.73.0 and @carbon/colors@11.51.0
+ * Run `npm run build` to regenerate from updated Carbon packages.
  */
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap');
@@ -24,11 +27,11 @@ section {
   --carbon-text: #f4f4f4;
   --carbon-text-secondary: #c6c6c6;
   --carbon-text-helper: #a8a8a8;
-  --carbon-text-placeholder: #6f6f6f;
+  --carbon-text-placeholder: rgba(244, 244, 244, 0.4);
   --carbon-text-on-color: #ffffff;
 
   --carbon-accent: #4589ff;
-  --carbon-accent-hover: #78a9ff;
+  --carbon-accent-hover: #4589ff;
   --carbon-link: #78a9ff;
   --carbon-link-visited: #be95ff;
 
@@ -39,11 +42,15 @@ section {
 
   --carbon-code-bg: #262626;
   --carbon-code-text: #f4f4f4;
-  --carbon-code-keyword: #78a9ff;
-  --carbon-code-string: #42be65;
-  --carbon-code-comment: #a8a8a8;
-  --carbon-code-number: #ff7eb6;
-  --carbon-code-fn: #be95ff;
+  --carbon-code-keyword: #4589ff;
+  --carbon-code-string: #f4f4f4;
+  --carbon-code-comment: #42be65;
+  --carbon-code-number: #6fdc8c;
+  --carbon-code-fn: #f1c21b;
+  --carbon-code-type: #3ddbd9;
+  --carbon-code-attr: #33b1ff;
+  --carbon-code-deletion: #fa4d56;
+  --carbon-code-insertion: #42be65;
 
   --carbon-pad: 64px;
   --carbon-rule: 4px;
@@ -62,93 +69,6 @@ section {
   text-align: left;
 
   border-left: var(--carbon-rule) solid var(--carbon-accent);
-}
-
-section.g10 {
-  --carbon-bg: #f4f4f4;
-  --carbon-layer: #ffffff;
-  --carbon-layer-accent: #e0e0e0;
-  --carbon-border: #c6c6c6;
-  --carbon-code-bg: #ffffff;
-}
-
-section.invert,
-section.dark,
-section.g100,
-section.g90 {
-  --carbon-bg: #161616;
-  --carbon-layer: #262626;
-  --carbon-layer-accent: #393939;
-  --carbon-border: #393939;
-  --carbon-border-strong: #6f6f6f;
-
-  --carbon-text: #f4f4f4;
-  --carbon-text-secondary: #c6c6c6;
-  --carbon-text-helper: #a8a8a8;
-  --carbon-text-placeholder: #6f6f6f;
-  --carbon-text-on-color: #ffffff;
-
-  --carbon-accent: #4589ff;
-  --carbon-accent-hover: #78a9ff;
-  --carbon-link: #78a9ff;
-  --carbon-link-visited: #be95ff;
-
-  --carbon-error: #fa4d56;
-  --carbon-success: #42be65;
-  --carbon-warning: #f1c21b;
-  --carbon-info: #4589ff;
-
-  --carbon-code-bg: #262626;
-  --carbon-code-text: #f4f4f4;
-  --carbon-code-keyword: #78a9ff;
-  --carbon-code-string: #42be65;
-  --carbon-code-comment: #a8a8a8;
-  --carbon-code-number: #ff7eb6;
-  --carbon-code-fn: #be95ff;
-
-  color-scheme: dark;
-}
-
-section.g90 {
-  --carbon-bg: #262626;
-  --carbon-layer: #393939;
-  --carbon-layer-accent: #525252;
-  --carbon-code-bg: #393939;
-}
-
-section.white,
-section.light {
-  --carbon-bg: #ffffff;
-  --carbon-layer: #f4f4f4;
-  --carbon-layer-accent: #e0e0e0;
-  --carbon-border: #e0e0e0;
-  --carbon-border-strong: #8d8d8d;
-
-  --carbon-text: #161616;
-  --carbon-text-secondary: #525252;
-  --carbon-text-helper: #6f6f6f;
-  --carbon-text-placeholder: #a8a8a8;
-  --carbon-text-on-color: #ffffff;
-
-  --carbon-accent: #0f62fe;
-  --carbon-accent-hover: #0050e6;
-  --carbon-link: #0f62fe;
-  --carbon-link-visited: #8a3ffc;
-
-  --carbon-error: #da1e28;
-  --carbon-success: #24a148;
-  --carbon-warning: #f1c21b;
-  --carbon-info: #0043ce;
-
-  --carbon-code-bg: #f4f4f4;
-  --carbon-code-text: #161616;
-  --carbon-code-keyword: #0043ce;
-  --carbon-code-string: #0e6027;
-  --carbon-code-comment: #6f6f6f;
-  --carbon-code-number: #d12771;
-  --carbon-code-fn: #8a3ffc;
-
-  color-scheme: light;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -262,13 +182,15 @@ pre code {
 }
 
 .hljs { background: transparent; color: var(--carbon-code-text); }
-.hljs-keyword, .hljs-selector-tag, .hljs-built_in, .hljs-type { color: var(--carbon-code-keyword); }
+.hljs-keyword, .hljs-selector-tag, .hljs-built_in { color: var(--carbon-code-keyword); }
 .hljs-string, .hljs-attr, .hljs-template-tag, .hljs-addition { color: var(--carbon-code-string); }
 .hljs-comment, .hljs-quote, .hljs-meta { color: var(--carbon-code-comment); font-style: italic; }
 .hljs-number, .hljs-literal, .hljs-symbol { color: var(--carbon-code-number); }
-.hljs-title, .hljs-function, .hljs-section, .hljs-name { color: var(--carbon-code-fn); }
-.hljs-variable, .hljs-attribute, .hljs-tag { color: var(--carbon-text); }
-.hljs-deletion { color: var(--carbon-error); }
+.hljs-title, .hljs-title.function_, .hljs-section, .hljs-name { color: var(--carbon-code-fn); }
+.hljs-type, .hljs-title.class_, .hljs-class .hljs-title { color: var(--carbon-code-type); }
+.hljs-variable, .hljs-attribute, .hljs-tag { color: var(--carbon-code-attr); }
+.hljs-deletion { color: var(--carbon-code-deletion); }
+.hljs-addition { color: var(--carbon-code-insertion); }
 
 table {
   width: 100%;
@@ -314,19 +236,17 @@ mark {
   color: inherit;
 }
 
-/* Mermaid is not rendered by Marp core. These styles only apply if a
-   Mermaid plugin is wired into the Marp engine. */
 .mermaid {
-  background: var(--carbon-layer);
-  border: 1px solid var(--carbon-border);
-  border-left: 3px solid var(--carbon-accent);
-  padding: 1em;
-  font-family: var(--carbon-font-sans);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.75em 0;
 }
-.mermaid text { fill: var(--carbon-text) !important; font-family: var(--carbon-font-sans) !important; }
-.mermaid .node rect, .mermaid .node circle, .mermaid .node polygon { fill: var(--carbon-bg) !important; stroke: var(--carbon-accent) !important; }
-.mermaid .edgePath .path { stroke: var(--carbon-text-secondary) !important; }
-.mermaid .arrowheadPath { fill: var(--carbon-text-secondary) !important; }
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  font-family: var(--carbon-font-sans) !important;
+}
 
 header, footer {
   position: absolute;
@@ -406,4 +326,151 @@ section.split > footer { grid-column: 1 / -1; }
 
 @media print {
   section { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+section.g10 {
+  --carbon-bg: #f4f4f4;
+  --carbon-layer: #ffffff;
+  --carbon-layer-accent: #f4f4f4;
+  --carbon-border: #c6c6c6;
+  --carbon-code-bg: #ffffff;
+  color-scheme: light;
+}
+
+section.g90 {
+  --carbon-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --carbon-font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --carbon-font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+
+  --carbon-bg: #262626;
+  --carbon-layer: #393939;
+  --carbon-layer-accent: #525252;
+  --carbon-border: #525252;
+  --carbon-border-strong: #8d8d8d;
+
+  --carbon-text: #f4f4f4;
+  --carbon-text-secondary: #c6c6c6;
+  --carbon-text-helper: #c6c6c6;
+  --carbon-text-placeholder: rgba(244, 244, 244, 0.4);
+  --carbon-text-on-color: #ffffff;
+
+  --carbon-accent: #4589ff;
+  --carbon-accent-hover: #4589ff;
+  --carbon-link: #78a9ff;
+  --carbon-link-visited: #be95ff;
+
+  --carbon-error: #ff8389;
+  --carbon-success: #42be65;
+  --carbon-warning: #f1c21b;
+  --carbon-info: #4589ff;
+
+  --carbon-code-bg: #393939;
+  --carbon-code-text: #f4f4f4;
+  --carbon-code-keyword: #4589ff;
+  --carbon-code-string: #f4f4f4;
+  --carbon-code-comment: #42be65;
+  --carbon-code-number: #6fdc8c;
+  --carbon-code-fn: #f1c21b;
+  --carbon-code-type: #3ddbd9;
+  --carbon-code-attr: #33b1ff;
+  --carbon-code-deletion: #ff8389;
+  --carbon-code-insertion: #42be65;
+
+  --carbon-pad: 64px;
+  --carbon-rule: 4px;
+
+  color-scheme: dark;
+}
+
+section.white,
+section.light {
+  --carbon-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --carbon-font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --carbon-font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+
+  --carbon-bg: #ffffff;
+  --carbon-layer: #f4f4f4;
+  --carbon-layer-accent: #ffffff;
+  --carbon-border: #e0e0e0;
+  --carbon-border-strong: #8d8d8d;
+
+  --carbon-text: #161616;
+  --carbon-text-secondary: #525252;
+  --carbon-text-helper: #6f6f6f;
+  --carbon-text-placeholder: rgba(22, 22, 22, 0.4);
+  --carbon-text-on-color: #ffffff;
+
+  --carbon-accent: #0f62fe;
+  --carbon-accent-hover: #0f62fe;
+  --carbon-link: #0f62fe;
+  --carbon-link-visited: #8a3ffc;
+
+  --carbon-error: #da1e28;
+  --carbon-success: #24a148;
+  --carbon-warning: #f1c21b;
+  --carbon-info: #0043ce;
+
+  --carbon-code-bg: #f4f4f4;
+  --carbon-code-text: #161616;
+  --carbon-code-keyword: #0f62fe;
+  --carbon-code-string: #161616;
+  --carbon-code-comment: #198038;
+  --carbon-code-number: #198038;
+  --carbon-code-fn: #8e6a00;
+  --carbon-code-type: #007d79;
+  --carbon-code-attr: #00539a;
+  --carbon-code-deletion: #da1e28;
+  --carbon-code-insertion: #24a148;
+
+  --carbon-pad: 64px;
+  --carbon-rule: 4px;
+
+  color-scheme: light;
+}
+
+section.invert,
+section.dark,
+section.g100 {
+  --carbon-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --carbon-font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --carbon-font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+
+  --carbon-bg: #161616;
+  --carbon-layer: #262626;
+  --carbon-layer-accent: #393939;
+  --carbon-border: #393939;
+  --carbon-border-strong: #6f6f6f;
+
+  --carbon-text: #f4f4f4;
+  --carbon-text-secondary: #c6c6c6;
+  --carbon-text-helper: #a8a8a8;
+  --carbon-text-placeholder: rgba(244, 244, 244, 0.4);
+  --carbon-text-on-color: #ffffff;
+
+  --carbon-accent: #4589ff;
+  --carbon-accent-hover: #4589ff;
+  --carbon-link: #78a9ff;
+  --carbon-link-visited: #be95ff;
+
+  --carbon-error: #fa4d56;
+  --carbon-success: #42be65;
+  --carbon-warning: #f1c21b;
+  --carbon-info: #4589ff;
+
+  --carbon-code-bg: #262626;
+  --carbon-code-text: #f4f4f4;
+  --carbon-code-keyword: #4589ff;
+  --carbon-code-string: #f4f4f4;
+  --carbon-code-comment: #42be65;
+  --carbon-code-number: #6fdc8c;
+  --carbon-code-fn: #f1c21b;
+  --carbon-code-type: #3ddbd9;
+  --carbon-code-attr: #33b1ff;
+  --carbon-code-deletion: #fa4d56;
+  --carbon-code-insertion: #42be65;
+
+  --carbon-pad: 64px;
+  --carbon-rule: 4px;
+
+  color-scheme: dark;
 }

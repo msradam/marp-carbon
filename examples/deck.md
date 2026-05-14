@@ -118,6 +118,40 @@ $$
 
 ---
 
+## Mermaid diagrams
+
+Architecture and flow diagrams use IBM Carbon tokens automatically. Add `<!-- _class: dark -->` and the diagram palette flips to dark tokens.
+
+```mermaid
+flowchart LR
+  A[Client] --> B{API Gateway}
+  B --> C[Auth Service]
+  B --> D[Data Service]
+  D --> E[(Database)]
+  C --> F[Token Store]
+```
+
+---
+
+<!-- _class: dark -->
+
+## Mermaid on dark
+
+```mermaid
+sequenceDiagram
+  participant U as User
+  participant A as Auth
+  participant S as Service
+  U->>A: login(credentials)
+  A-->>U: token
+  U->>S: request + token
+  S->>A: verify(token)
+  A-->>S: valid
+  S-->>U: response
+```
+
+---
+
 ![bg right:40% fit](https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg)
 
 ## Background images

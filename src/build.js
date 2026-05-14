@@ -1,62 +1,100 @@
-/*!
- * @theme carbon
- * @auto-scaling true
- * @size 16:9 1280px 720px
- * @size 4:3 960px 720px
- *
- * Unofficial Marp theme based on the IBM Carbon Design System.
- * Not affiliated with IBM. See README for details.
- *
- * Generated from @carbon/themes@11.73.0 and @carbon/colors@11.51.0
- * Run `npm run build` to regenerate from updated Carbon packages.
- */
+#!/usr/bin/env node
+'use strict';
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap');
+const fs = require('fs');
+const path = require('path');
+const { white, g10, g90, g100 } = require('@carbon/themes');
+const colors = require('@carbon/colors');
+const { version: themeVersion } = require('@carbon/themes/package.json');
+const { version: colorsVersion } = require('@carbon/colors/package.json');
 
-section {
+const OUT_DIR = path.join(__dirname, '..', 'themes');
+
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap');`;
+
+function tokens(t) {
+  return {
+    bg:               t.background,
+    layer:            t.layer01,
+    layerAccent:      t.layer02,
+    border:           t.borderSubtle00 ?? t.borderSubtle01,
+    borderStrong:     t.borderStrong01,
+    text:             t.textPrimary,
+    textSecondary:    t.textSecondary,
+    textHelper:       t.textHelper,
+    textPlaceholder:  t.textPlaceholder,
+    textOnColor:      t.textOnColor,
+    accent:           t.interactive,
+    accentHover:      t.interactiveHover ?? t.hoverPrimary ?? t.interactive,
+    link:             t.linkPrimary,
+    linkVisited:      t.linkVisited,
+    error:            t.supportError,
+    success:          t.supportSuccess,
+    warning:          t.supportWarning,
+    info:             t.supportInfo,
+    codeBg:           t.layer01,
+    codeText:         t.textPrimary,
+    codeKeyword:      t.syntaxKeyword,
+    codeString:       t.syntaxString,
+    codeComment:      t.syntaxComment ?? t.syntaxLineComment,
+    codeNumber:       t.syntaxNumber,
+    codeFn:           t.syntaxFunction,
+    codeType:         t.syntaxTypeName ?? t.syntaxClassName,
+    codeAttr:         t.syntaxAttribute ?? t.syntaxAttributeName,
+    codeDeletion:     t.supportError,
+    codeInsertion:    t.supportSuccess,
+  };
+}
+
+function cssVars(tok, scheme) {
+  return `
   --carbon-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
   --carbon-font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --carbon-font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
 
-  --carbon-bg: #ffffff;
-  --carbon-layer: #f4f4f4;
-  --carbon-layer-accent: #ffffff;
-  --carbon-border: #e0e0e0;
-  --carbon-border-strong: #8d8d8d;
+  --carbon-bg: ${tok.bg};
+  --carbon-layer: ${tok.layer};
+  --carbon-layer-accent: ${tok.layerAccent};
+  --carbon-border: ${tok.border};
+  --carbon-border-strong: ${tok.borderStrong};
 
-  --carbon-text: #161616;
-  --carbon-text-secondary: #525252;
-  --carbon-text-helper: #6f6f6f;
-  --carbon-text-placeholder: rgba(22, 22, 22, 0.4);
-  --carbon-text-on-color: #ffffff;
+  --carbon-text: ${tok.text};
+  --carbon-text-secondary: ${tok.textSecondary};
+  --carbon-text-helper: ${tok.textHelper};
+  --carbon-text-placeholder: ${tok.textPlaceholder};
+  --carbon-text-on-color: ${tok.textOnColor};
 
-  --carbon-accent: #0f62fe;
-  --carbon-accent-hover: #0f62fe;
-  --carbon-link: #0f62fe;
-  --carbon-link-visited: #8a3ffc;
+  --carbon-accent: ${tok.accent};
+  --carbon-accent-hover: ${tok.accentHover};
+  --carbon-link: ${tok.link};
+  --carbon-link-visited: ${tok.linkVisited};
 
-  --carbon-error: #da1e28;
-  --carbon-success: #24a148;
-  --carbon-warning: #f1c21b;
-  --carbon-info: #0043ce;
+  --carbon-error: ${tok.error};
+  --carbon-success: ${tok.success};
+  --carbon-warning: ${tok.warning};
+  --carbon-info: ${tok.info};
 
-  --carbon-code-bg: #f4f4f4;
-  --carbon-code-text: #161616;
-  --carbon-code-keyword: #0f62fe;
-  --carbon-code-string: #161616;
-  --carbon-code-comment: #198038;
-  --carbon-code-number: #198038;
-  --carbon-code-fn: #8e6a00;
-  --carbon-code-type: #007d79;
-  --carbon-code-attr: #00539a;
-  --carbon-code-deletion: #da1e28;
-  --carbon-code-insertion: #24a148;
+  --carbon-code-bg: ${tok.codeBg};
+  --carbon-code-text: ${tok.codeText};
+  --carbon-code-keyword: ${tok.codeKeyword};
+  --carbon-code-string: ${tok.codeString};
+  --carbon-code-comment: ${tok.codeComment};
+  --carbon-code-number: ${tok.codeNumber};
+  --carbon-code-fn: ${tok.codeFn};
+  --carbon-code-type: ${tok.codeType};
+  --carbon-code-attr: ${tok.codeAttr};
+  --carbon-code-deletion: ${tok.codeDeletion};
+  --carbon-code-insertion: ${tok.codeInsertion};
 
   --carbon-pad: 64px;
   --carbon-rule: 4px;
 
-  color-scheme: light;
-  background: var(--carbon-bg);
+  color-scheme: ${scheme};`.trim();
+}
+
+function sharedStyles() {
+  return `
+background: var(--carbon-bg);
   color: var(--carbon-text);
   font-family: var(--carbon-font-sans);
   font-weight: 400;
@@ -326,150 +364,116 @@ section.split > footer { grid-column: 1 / -1; }
 
 @media print {
   section { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}`.trim();
 }
 
+function buildLight() {
+  const wTok = tokens(white);
+  const g10Tok = tokens(g10);
+  const g90Tok = tokens(g90);
+  const g100Tok = tokens(g100);
+
+  return `/*!
+ * @theme carbon
+ * @auto-scaling true
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ *
+ * Unofficial Marp theme based on the IBM Carbon Design System.
+ * Not affiliated with IBM. See README for details.
+ *
+ * Generated from @carbon/themes@${themeVersion} and @carbon/colors@${colorsVersion}
+ * Run \`npm run build\` to regenerate from updated Carbon packages.
+ */
+
+${FONTS}
+
+section {
+  ${cssVars(wTok, 'light')}
+  ${sharedStyles()}
+
 section.g10 {
-  --carbon-bg: #f4f4f4;
-  --carbon-layer: #ffffff;
-  --carbon-layer-accent: #f4f4f4;
-  --carbon-border: #c6c6c6;
-  --carbon-code-bg: #ffffff;
+  --carbon-bg: ${g10Tok.bg};
+  --carbon-layer: ${g10Tok.layer};
+  --carbon-layer-accent: ${g10Tok.layerAccent};
+  --carbon-border: ${g10Tok.border};
+  --carbon-code-bg: ${g10Tok.layer};
 }
 
 section.invert,
 section.dark,
 section.g100 {
-  --carbon-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-  --carbon-font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --carbon-font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
-
-  --carbon-bg: #161616;
-  --carbon-layer: #262626;
-  --carbon-layer-accent: #393939;
-  --carbon-border: #393939;
-  --carbon-border-strong: #6f6f6f;
-
-  --carbon-text: #f4f4f4;
-  --carbon-text-secondary: #c6c6c6;
-  --carbon-text-helper: #a8a8a8;
-  --carbon-text-placeholder: rgba(244, 244, 244, 0.4);
-  --carbon-text-on-color: #ffffff;
-
-  --carbon-accent: #4589ff;
-  --carbon-accent-hover: #4589ff;
-  --carbon-link: #78a9ff;
-  --carbon-link-visited: #be95ff;
-
-  --carbon-error: #fa4d56;
-  --carbon-success: #42be65;
-  --carbon-warning: #f1c21b;
-  --carbon-info: #4589ff;
-
-  --carbon-code-bg: #262626;
-  --carbon-code-text: #f4f4f4;
-  --carbon-code-keyword: #4589ff;
-  --carbon-code-string: #f4f4f4;
-  --carbon-code-comment: #42be65;
-  --carbon-code-number: #6fdc8c;
-  --carbon-code-fn: #f1c21b;
-  --carbon-code-type: #3ddbd9;
-  --carbon-code-attr: #33b1ff;
-  --carbon-code-deletion: #fa4d56;
-  --carbon-code-insertion: #42be65;
-
-  --carbon-pad: 64px;
-  --carbon-rule: 4px;
-
-  color-scheme: dark;
+  ${cssVars(g100Tok, 'dark')}
 }
 
 section.g90 {
-  --carbon-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-  --carbon-font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --carbon-font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
-
-  --carbon-bg: #262626;
-  --carbon-layer: #393939;
-  --carbon-layer-accent: #525252;
-  --carbon-border: #525252;
-  --carbon-border-strong: #8d8d8d;
-
-  --carbon-text: #f4f4f4;
-  --carbon-text-secondary: #c6c6c6;
-  --carbon-text-helper: #c6c6c6;
-  --carbon-text-placeholder: rgba(244, 244, 244, 0.4);
-  --carbon-text-on-color: #ffffff;
-
-  --carbon-accent: #4589ff;
-  --carbon-accent-hover: #4589ff;
-  --carbon-link: #78a9ff;
-  --carbon-link-visited: #be95ff;
-
-  --carbon-error: #ff8389;
-  --carbon-success: #42be65;
-  --carbon-warning: #f1c21b;
-  --carbon-info: #4589ff;
-
-  --carbon-code-bg: #393939;
-  --carbon-code-text: #f4f4f4;
-  --carbon-code-keyword: #4589ff;
-  --carbon-code-string: #f4f4f4;
-  --carbon-code-comment: #42be65;
-  --carbon-code-number: #6fdc8c;
-  --carbon-code-fn: #f1c21b;
-  --carbon-code-type: #3ddbd9;
-  --carbon-code-attr: #33b1ff;
-  --carbon-code-deletion: #ff8389;
-  --carbon-code-insertion: #42be65;
-
-  --carbon-pad: 64px;
-  --carbon-rule: 4px;
-
-  color-scheme: dark;
+  ${cssVars(g90Tok, 'dark')}
 }
 
 section.white,
 section.light {
-  --carbon-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-  --carbon-font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --carbon-font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+  ${cssVars(wTok, 'light')}
+}
+`;
+}
 
-  --carbon-bg: #ffffff;
-  --carbon-layer: #f4f4f4;
-  --carbon-layer-accent: #ffffff;
-  --carbon-border: #e0e0e0;
-  --carbon-border-strong: #8d8d8d;
+function buildDark() {
+  const wTok = tokens(white);
+  const g10Tok = tokens(g10);
+  const g90Tok = tokens(g90);
+  const g100Tok = tokens(g100);
 
-  --carbon-text: #161616;
-  --carbon-text-secondary: #525252;
-  --carbon-text-helper: #6f6f6f;
-  --carbon-text-placeholder: rgba(22, 22, 22, 0.4);
-  --carbon-text-on-color: #ffffff;
+  return `/*!
+ * @theme carbon-dark
+ * @auto-scaling true
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ *
+ * Unofficial Marp theme based on the IBM Carbon Design System — dark (g100) default.
+ * Not affiliated with IBM. See README for details.
+ *
+ * Generated from @carbon/themes@${themeVersion} and @carbon/colors@${colorsVersion}
+ * Run \`npm run build\` to regenerate from updated Carbon packages.
+ */
 
-  --carbon-accent: #0f62fe;
-  --carbon-accent-hover: #0f62fe;
-  --carbon-link: #0f62fe;
-  --carbon-link-visited: #8a3ffc;
+${FONTS}
 
-  --carbon-error: #da1e28;
-  --carbon-success: #24a148;
-  --carbon-warning: #f1c21b;
-  --carbon-info: #0043ce;
+section {
+  ${cssVars(g100Tok, 'dark')}
+  ${sharedStyles()}
 
-  --carbon-code-bg: #f4f4f4;
-  --carbon-code-text: #161616;
-  --carbon-code-keyword: #0f62fe;
-  --carbon-code-string: #161616;
-  --carbon-code-comment: #198038;
-  --carbon-code-number: #198038;
-  --carbon-code-fn: #8e6a00;
-  --carbon-code-type: #007d79;
-  --carbon-code-attr: #00539a;
-  --carbon-code-deletion: #da1e28;
-  --carbon-code-insertion: #24a148;
-
-  --carbon-pad: 64px;
-  --carbon-rule: 4px;
-
+section.g10 {
+  --carbon-bg: ${g10Tok.bg};
+  --carbon-layer: ${g10Tok.layer};
+  --carbon-layer-accent: ${g10Tok.layerAccent};
+  --carbon-border: ${g10Tok.border};
+  --carbon-code-bg: ${g10Tok.layer};
   color-scheme: light;
 }
+
+section.g90 {
+  ${cssVars(g90Tok, 'dark')}
+}
+
+section.white,
+section.light {
+  ${cssVars(wTok, 'light')}
+}
+
+section.invert,
+section.dark,
+section.g100 {
+  ${cssVars(g100Tok, 'dark')}
+}
+`;
+}
+
+const light = buildLight();
+const dark = buildDark();
+
+fs.writeFileSync(path.join(OUT_DIR, 'carbon.css'), light);
+fs.writeFileSync(path.join(OUT_DIR, 'carbon-dark.css'), dark);
+
+console.log('Built themes/carbon.css and themes/carbon-dark.css');
+console.log('  @carbon/themes:', themeVersion);
+console.log('  @carbon/colors:', colorsVersion);
