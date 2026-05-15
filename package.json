@@ -1,5 +1,5 @@
 {
-  "name": "carbon-marp",
+  "name": "marp-carbon",
   "version": "0.1.0",
   "description": "Marp theme based on the IBM Carbon Design System, with Carbon token-driven CSS and Mermaid diagram theming.",
   "main": "engine/index.js",
