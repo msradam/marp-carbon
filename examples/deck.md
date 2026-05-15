@@ -158,7 +158,7 @@ sequenceDiagram
 
 ![w:220](img/aadam.png) ![w:220](img/antony.png) ![w:220](img/clista.png)
 
-Inline images sized with Marp's `![w:220]` directive. Adam, Antony, Clista, three users we design for.
+Inline images sized with Marp's `![w:220]` directive. Aadam, Antony, Clista, three users we design for.
 
 - `![w:220](img/aadam.png)`, width directive
 - `![w:200 h:200](img.png)`, explicit dimensions
