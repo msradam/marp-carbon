@@ -255,9 +255,9 @@ img {
   max-width: 100%;
   height: auto;
   background: transparent;
-  display: block;
 }
-p img { display: inline-block; }
+p img { display: inline-block; vertical-align: middle; }
+p img + img { margin-left: 0.5em; }
 figure {
   margin: 0.5em 0;
   display: flex;

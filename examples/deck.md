@@ -158,31 +158,11 @@ sequenceDiagram
 
 ![w:220](adam.png) ![w:220](antony.png) ![w:220](clista.png)
 
-Inline images sized with Marp's `![w:220]` directive. Adam, Antony, Clista.
+Inline images sized with Marp's `![w:220]` directive. Adam, Antony, Clista — three users we design for.
 
----
-
-![bg left:40%](clista.png)
-
-## Clista
-
-Senior researcher.
-
-- Citations and provenance for every artifact
-- Reproducibility above polish
-- Plain text everywhere
-
----
-
-![bg right:45%](adam.png)
-
-## Adam
-
-Director of platform engineering.
-
-- Wants tools that get out of the way
-- Reads diffs more than dashboards
-- Will read source before docs
+- `![w:220](adam.png)` — width directive
+- `![w:200 h:200](img.png)` — explicit dimensions
+- `![](img.png)` — natural size, capped to slide width
 
 ---
 
