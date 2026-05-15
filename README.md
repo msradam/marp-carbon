@@ -4,7 +4,7 @@ A [Marp](https://marp.app) theme based on the [IBM Carbon Design System](https:/
 
 ## Preview
 
-[examples/deck.pdf](examples/deck.pdf) — full example deck as PDF (12 slides, light and dark variants, Mermaid diagrams).
+[examples/deck.pdf](examples/deck.pdf), full example deck as PDF (12 slides, light and dark variants, Mermaid diagrams).
 
 ## Quick start
 
@@ -201,6 +201,10 @@ I work at IBM, but this is a personal project. It is **not** an official IBM pro
 The tokens, type scale, and color values here are taken from the public `@carbon/colors` and `@carbon/themes` packages, but this repo will drift from upstream Carbon over time. If you need an accurate, current reference, go to the official docs.
 
 "IBM", "Carbon", and "IBM Plex" are trademarks of IBM.
+
+## Credits
+
+Persona illustrations in `examples/img/` by [Victoruler](https://www.flaticon.com/authors/victoruler) on [Flaticon](https://www.flaticon.com/).
 
 ## License
 

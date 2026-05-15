@@ -250,7 +250,7 @@ th {
 }
 tr:hover td { background: var(--carbon-layer); }
 
-/* Images — Marp canonical embedding (inline, ![bg], ![bg left/right]) */
+/* Images, Marp canonical embedding (inline, ![bg], ![bg left/right]) */
 img {
   max-width: 100%;
   height: auto;
@@ -442,7 +442,7 @@ function buildDark() {
  * @size 16:9 1280px 720px
  * @size 4:3 960px 720px
  *
- * Unofficial Marp theme based on the IBM Carbon Design System — dark (g100) default.
+ * Unofficial Marp theme based on the IBM Carbon Design System, dark (g100) default.
  * Not affiliated with IBM. See README for details.
  *
  * Generated from @carbon/themes@${themeVersion} and @carbon/colors@${colorsVersion}
