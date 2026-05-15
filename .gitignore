@@ -3,3 +3,7 @@ node_modules/
 *.pdf
 .DS_Store
 .vscode/
+
+# Always track the canonical example outputs
+!examples/deck.html
+!examples/deck.pdf
