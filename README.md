@@ -6,10 +6,48 @@ A [Marp](https://marp.app) theme based on the [IBM Carbon Design System](https:/
 
 [examples/deck.pdf](examples/deck.pdf), full example deck as PDF (12 slides, light and dark variants, Mermaid diagrams).
 
-## Quick start
+## Install
 
-1. Clone or download the repo.
-2. Create a new markdown file:
+Save the theme files anywhere on your system. A common spot is `~/.marp/themes/`:
+
+```bash
+mkdir -p ~/.marp/themes
+curl -sL https://raw.githubusercontent.com/msradam/marp-carbon/main/themes/carbon.css      -o ~/.marp/themes/carbon.css
+curl -sL https://raw.githubusercontent.com/msradam/marp-carbon/main/themes/carbon-dark.css -o ~/.marp/themes/carbon-dark.css
+```
+
+### VS Code
+
+Install the [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode) extension. Open your user settings JSON (`Cmd/Ctrl+Shift+P`, then `Preferences: Open User Settings (JSON)`) and add:
+
+```json
+{
+  "markdown.marp.themes": [
+    "/Users/YOU/.marp/themes/carbon.css",
+    "/Users/YOU/.marp/themes/carbon-dark.css"
+  ]
+}
+```
+
+Replace `/Users/YOU` with the output of `echo "$HOME"` (or `%USERPROFILE%` on Windows). Once saved, any `.md` file with `marp: true` and `theme: carbon` in the front matter previews with this theme. No per-folder install, no clone.
+
+### CLI
+
+```bash
+marp --theme ~/.marp/themes/carbon.css deck.md -o deck.html
+```
+
+For a project-wide config, drop a `.marprc.js` next to the deck:
+
+```js
+const path = require('path');
+const os = require('os');
+module.exports = {
+  themeSet: [path.join(os.homedir(), '.marp', 'themes')],
+};
+```
+
+### Minimal deck
 
 ```markdown
 ---
@@ -28,51 +66,6 @@ paginate: true
 
 - Point one
 - Point two
-```
-
-3. Run Marp pointing at the theme file:
-
-```bash
-marp --theme themes/carbon.css deck.md -o deck.html
-```
-
-For the dark theme:
-
-```bash
-marp --theme themes/carbon-dark.css deck.md -o deck.html
-```
-
-That's it. No build step, no dependencies to install.
-
-## VS Code
-
-Install the [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode) extension, then add to `.vscode/settings.json`:
-
-```json
-{
-  "markdown.marp.themes": [
-    "./themes/carbon.css",
-    "./themes/carbon-dark.css"
-  ]
-}
-```
-
-Then use either theme name in your front matter:
-
-```yaml
----
-marp: true
-theme: carbon
-paginate: true
----
-```
-
-```yaml
----
-marp: true
-theme: carbon-dark
-paginate: true
----
 ```
 
 ## Per-slide variants
