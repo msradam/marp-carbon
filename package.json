@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "build": "node src/build.js",
-    "example": "npx @marp-team/marp-cli --config .marprc.js examples/deck.md -o examples/deck.html && npx @marp-team/marp-cli --config .marprc.js examples/deck.md -o examples/deck.pdf && npx @marp-team/marp-cli --config .marprc.js examples/deck.md -o examples/deck.pptx"
+    "example": "npx @marp-team/marp-cli --allow-local-files --config .marprc.js examples/deck.md -o examples/deck.html && npx @marp-team/marp-cli --allow-local-files --config .marprc.js examples/deck.md -o examples/deck.pdf && npx @marp-team/marp-cli --allow-local-files --config .marprc.js examples/deck.md -o examples/deck.pptx"
   },
   "repository": {
     "type": "git",

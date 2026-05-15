@@ -152,14 +152,37 @@ sequenceDiagram
 
 ---
 
-![bg right:40% fit](https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg)
+###### Image embedding
 
-## Background images
+## Three personas
 
-Marp's `![bg right:40%]` syntax puts an image in a half-slide pane. The rest of the content flows on the left.
+![w:220](adam.png) ![w:220](antony.png) ![w:220](clista.png)
 
-- Works with `bg left`, `bg right`, `bg cover`, `bg fit`
-- Image filters (`blur`, `brightness`) pass through
+Inline images sized with Marp's `![w:220]` directive. Adam, Antony, Clista.
+
+---
+
+![bg left:40%](clista.png)
+
+## Clista
+
+Senior researcher.
+
+- Citations and provenance for every artifact
+- Reproducibility above polish
+- Plain text everywhere
+
+---
+
+![bg right:45%](adam.png)
+
+## Adam
+
+Director of platform engineering.
+
+- Wants tools that get out of the way
+- Reads diffs more than dashboards
+- Will read source before docs
 
 ---
 

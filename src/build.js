@@ -250,14 +250,27 @@ th {
 }
 tr:hover td { background: var(--carbon-layer); }
 
+/* Images — Marp canonical embedding (inline, ![bg], ![bg left/right]) */
 img {
   max-width: 100%;
+  height: auto;
   background: transparent;
+  display: block;
 }
+p img { display: inline-block; }
+figure {
+  margin: 0.5em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+figure img { display: block; }
 figcaption {
-  font-size: 14px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13px;
   color: var(--carbon-text-secondary);
   margin-top: 0.5em;
+  line-height: 1.4;
 }
 
 .katex { color: var(--carbon-text); font-size: 1em; }
