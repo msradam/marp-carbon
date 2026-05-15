@@ -6,6 +6,7 @@
   "exports": {
     ".": "./engine/index.js",
     "./mermaid": "./mermaid/index.js",
+    "./package.json": "./package.json",
     "./themes/*": "./themes/*"
   },
   "files": [
